@@ -313,12 +313,12 @@ function startGame() {
     let images = [];
 
     if (rows === 5 && cols === 5) {
-        for (let i = 1; i <= 12; i++) {
+        for (let i = 0; i < 12; i++) {
             images.push(img(arr[i]), img(arr[i]));
         }
         images.push("wild.jpg");
     } else {
-        for (let i = 1; i <= total / 2; i++) {
+        for (let i = 0; i < total / 2; i++) {
             images.push(img(arr[i]), img(arr[i]));
         }
     }
@@ -481,4 +481,5 @@ function handleEndChoice() {
 
 </body>
 </html>
+
 
