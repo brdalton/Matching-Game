@@ -116,22 +116,23 @@ select, button {
     }
 	
 	@media (hover: none) and (pointer: coarse) {
-    button,
-    select {
-        font-size: 18px;
-        padding: 10px 12px;
-    }
+    	button,
+    	select {
+       		font-size: 18px;
+        	padding: 10px 12px;
+    	}
 
-    #sidebar {
-        gap: 12px;
-    }
-}
+    	#sidebar {
+       		gap: 12px;
+    	}
+	}
 }
 
 .top-controls {
     display: flex;
-    align-items: center;
+    align-items: center;   /* keeps Start vertically fixed */
     gap: 8px;
+    position: relative;   /* anchor for dropdown */
 }
 
 /* Gear dropdown */
@@ -151,34 +152,35 @@ select, button {
 #settings summary::-webkit-details-marker {
     display: none;
 }
-
-#settings[open] {
-    background: #222;
-    padding: 10px;
-    border-radius: 6px;
-}
-
-/* Dropdown panel */
-#settings label,
-#settings button {
-    display: block;
-    width: 100%;
-    margin-top: 8px;
-}
-
-/* Mobile portrait: keep everything compact */
-@media (orientation: portrait) {
-    #sidebar {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .top-controls {
         justify-content: center;
     }
 }
 
+#settings label {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+/* (Optional) smaller selects inside the dropdown */
+#settings select {
+    font-size: 14px;
+    padding: 4px 6px;
+}	
+	
+#settings[open] {
+    position: absolute;
+    top: 100%;           /* below the gear */
+    right: 0;
+    background: #222;
+    padding: 10px;
+    border-radius: 6px;
+    z-index: 100;
+    min-width: 160px;
+}
 </style>
 </head>
 
@@ -479,3 +481,4 @@ function handleEndChoice() {
 
 </body>
 </html>
+
